@@ -11,49 +11,50 @@ const Line = ({ index, value, setValues, setIndex, on }) => {
   const [point, setPoint] = useState(0)
 
   const keyDown = (event) => {
-    console.log(event.key)
-    if (event.key === 'Control') {
-      isOnControlKey = true
-      console.log('Control on called')
+    // カーソル移動
+    switch (event.key) {
+      case 'Control':
+        isOnControlKey = true
+        break
+      case 'b':
+        isOnBKey = true
+        break
+      case 'f':
+        isOnFKey = true
+        break
+      case 'ArrowLeft':
+        if (point >= value.length) {
+        } else {
+          setPoint((point) => (point = point + 1))
+        }
+        break
+      case 'ArrowRight':
+        if (point <= 0) {
+        } else {
+          setPoint((point) => (point = point - 1))
+          console.log(point)
+        }
+        break
+      default:
+        break
     }
-    if (event.key === 'b') {
-      isOnBKey = true
-      console.log('bkey')
-    }
-    if (event.key === 'f') {
-      isOnFKey = true
-      console.log('bkey')
-    }
-    if (event.key === 'ArrowLeft') {
+
+    if (isOnBKey && isOnControlKey) {
       if (point >= value.length) {
       } else {
         setPoint((point) => (point = point + 1))
       }
-      console.log(point)
-    } else if (event.key === 'ArrowRight') {
-      if (point <= 0) {
-      } else {
-        setPoint((point) => (point = point - 1))
-        console.log(point)
-      }
-    } else if (isOnBKey && isOnControlKey) {
-      console.log('OKOKOK')
-      if (point >= value.length) {
-      } else {
-        setPoint((point) => (point = point + 1))
-      }
-      console.log(point)
     } else if (isOnFKey && isOnControlKey) {
-      console.log('OKOKOK')
       if (point <= 0) {
       } else {
         setPoint((point) => (point = point - 1))
       }
-      console.log(point)
     } else if (
       event.key === 'Shift' ||
       event.key === 'Meta' ||
-      event.key === 'Control'
+      event.key === 'Control' ||
+      event.key === 'ArrowLeft' ||
+      event.key === 'ArrowRight'
     ) {
     } else if (event.key === 'Enter') {
       setIndex((index) => index++)
@@ -81,14 +82,18 @@ const Line = ({ index, value, setValues, setIndex, on }) => {
   }
 
   const keyUp = (event) => {
-    if (event.key === 'b') {
-      isOnBKey = false
-    }
-    if (event.key === 'f') {
-      isOnFKey = false
-    }
-    if (event.key === 'Control') {
-      isOnControlKey = false
+    switch (event.key) {
+      case 'b':
+        isOnBKey = false
+        break
+      case 'f':
+        isOnFKey = false
+        break
+      case 'Control':
+        isOnControlKey = false
+        break
+      default:
+        break
     }
   }
 
