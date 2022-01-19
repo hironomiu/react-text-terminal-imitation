@@ -1,13 +1,81 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  flex: auto;
+  flex-direction: column;
+  width: 99vw;
+  height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+header {
+  background-color: gray;
+  display: flex;
+  flex: auto;
+  height: 30px;
+  border-radius: 5px 5px 0 0;
+}
+
+header #div {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+}
+header div #div1 {
+  background-color: rgb(226, 65, 65);
+  width: 13px;
+  height: 13px;
+  margin: 0 3px 0 3px;
+  border-radius: 50%;
+}
+header div #div2 {
+  background-color: orange;
+  width: 13px;
+  height: 13px;
+  margin: 0 3px 0 3px;
+  border-radius: 50%;
+}
+
+header div #div3 {
+  background-color: rgb(11, 196, 66);
+  width: 13px;
+  height: 13px;
+  margin: 0 3px 0 3px;
+  border-radius: 50%;
+}
+
+main {
+  background-color: black;
+  overflow-y: auto;
+  color: white;
+  height: 90vh;
+  white-space: pre-wrap;
+  padding-bottom: 5px;
+}
+
+main div {
+  outline: none;
+}
+
+.blink {
+  animation: blinkAnime 1s infinite alternate;
+  /* animation: blinkEffect 1s ease infinite; */
+}
+@keyframes blinkAnime {
+  0% {
+    background-color: #060000;
+  }
+  100% {
+    background-color: #d2d2d2;
+  }
+}
+
+.div-hoge {
+  color: greenyellow;
+}
+
+footer {
+  height: 30px;
+  background-color: gray;
+  text-align: center;
+  border-radius: 0 0 5px 5px;
+  font-family: mono;
 }

@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import Line from './components/Line'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
-function App() {
+const App = () => {
+  const array = ['']
+  const [values, setValues] = useState(array)
+  const [, setIndex] = useState(0)
+  const [isClick, setIsClick] = useState(false)
+
+  useEffect(() => {
+    setValues((values) => (values = [...values]))
+  }, [isClick])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div onClick={() => setIsClick(!isClick)}>
+        <Header />
+        <main>
+          <div>
+            {values.map((value, index) =>
+              index === values.length - 1 ? (
+                <Line
+                  key={index}
+                  index={index}
+                  value={value}
+                  setValues={setValues}
+                  setIndex={setIndex}
+                  on={true}
+                />
+              ) : (
+                <Line
+                  key={index}
+                  index={index}
+                  value={value}
+                  setValues={setValues}
+                  setIndex={setIndex}
+                  on={false}
+                />
+              )
+            )}
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
