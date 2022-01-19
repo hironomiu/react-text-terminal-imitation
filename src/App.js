@@ -1,47 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import Line from './components/Line'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Main from './components/Main'
 
 const App = () => {
-  const array = ['']
-  const [values, setValues] = useState(array)
-  const [, setIndex] = useState(0)
   const [isClick, setIsClick] = useState(false)
+  const [toggle, setToggle] = useState(false)
 
   useEffect(() => {
-    setValues((values) => (values = [...values]))
+    // 入力カーソルにフォーカスを当てるための処理、toggle後Mainに渡し再レンダリングさせることで実装
+    setToggle((toggle) => !toggle)
   }, [isClick])
 
   return (
     <>
       <div onClick={() => setIsClick(!isClick)}>
         <Header />
-        <main>
-          <div>
-            {values.map((value, index) =>
-              index === values.length - 1 ? (
-                <Line
-                  key={index}
-                  index={index}
-                  value={value}
-                  setValues={setValues}
-                  setIndex={setIndex}
-                  on={true}
-                />
-              ) : (
-                <Line
-                  key={index}
-                  index={index}
-                  value={value}
-                  setValues={setValues}
-                  setIndex={setIndex}
-                  on={false}
-                />
-              )
-            )}
-          </div>
-        </main>
+        <Main toggle={toggle} />
         <Footer />
       </div>
     </>
