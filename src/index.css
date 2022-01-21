@@ -2,6 +2,7 @@ body {
   background-color: black;
   flex: auto;
   flex-direction: column;
+  overflow-y: hidden;
   width: 99vw;
   height: 100vh;
 }
@@ -45,8 +46,11 @@ header div #div3 {
 main {
   background-color: black;
   overflow-y: auto;
-  color: white;
   height: 90vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
   white-space: pre-wrap;
   padding-bottom: 5px;
 }

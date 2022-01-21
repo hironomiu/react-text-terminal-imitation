@@ -108,6 +108,7 @@ const Line = ({ index, value, setValues, setIndex, on }) => {
 
   return (
     <div
+      className="line"
       onKeyDown={(event) => keyDown(event)}
       onKeyUp={(event) => keyUp(event)}
       tabIndex={on ? '0' : ''}
