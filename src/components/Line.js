@@ -32,7 +32,6 @@ const Line = ({ index, value, setValues, setIndex, on }) => {
         if (point <= 0) {
         } else {
           setPoint((point) => (point = point - 1))
-          // console.log(point)
         }
         break
       default:
@@ -75,7 +74,7 @@ const Line = ({ index, value, setValues, setIndex, on }) => {
           if (point === 0) {
             array[index] = value[index] + event.key
           } else {
-            console.log(point)
+            // カーソル移動した位置に入力値を差し込む
             const newValue =
               value[index].slice(0, value[index].length - point) +
               event.key +
@@ -87,8 +86,6 @@ const Line = ({ index, value, setValues, setIndex, on }) => {
           }
           return (value = [...array])
         })
-        // console.log(isOnBKey)
-        // console.log(isOnControlKey)
       }
     }
   }
