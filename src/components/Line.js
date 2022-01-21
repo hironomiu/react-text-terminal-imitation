@@ -11,7 +11,7 @@ const Line = ({ index, value, setValues, setIndex, on }) => {
   const [point, setPoint] = useState(0)
 
   const keyDown = (event) => {
-    // カーソル移動
+    // カーソル移動 & フラグ立て
     switch (event.key) {
       case 'Control':
         isOnControlKey = true
@@ -38,17 +38,21 @@ const Line = ({ index, value, setValues, setIndex, on }) => {
         break
     }
 
+    // カーソル移動
     if (isOnBKey && isOnControlKey) {
       if (point >= value.length) {
       } else {
         setPoint((point) => (point = point + 1))
       }
-    } else if (isOnFKey && isOnControlKey) {
+    }
+    if (isOnFKey && isOnControlKey) {
       if (point <= 0) {
       } else {
         setPoint((point) => (point = point - 1))
       }
-    } else if (
+    }
+
+    if (
       event.key === 'Shift' ||
       event.key === 'Meta' ||
       event.key === 'Control' ||
@@ -108,14 +112,12 @@ const Line = ({ index, value, setValues, setIndex, on }) => {
 
   return (
     <div
-      className="line"
       onKeyDown={(event) => keyDown(event)}
       onKeyUp={(event) => keyUp(event)}
       tabIndex={on ? '0' : ''}
       ref={on ? lineRef : null}
     >
       <Prompt value={''} />
-
       {on ? (
         <>
           {point > 0 ? (
