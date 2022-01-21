@@ -21,3 +21,13 @@ yarn start
 ```
 yarn build
 ```
+
+## How to move the cursor
+
+### Left
+
+`ArrowLeft` or `CTRL + b`
+
+### Right
+
+`ArrowRight` or `CTRL + f`
