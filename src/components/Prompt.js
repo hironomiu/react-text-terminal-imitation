@@ -1,4 +1,4 @@
-const Prompt = ({ value = ' >>> ' }) => {
+const Prompt = ({ value = '>>> ' }) => {
   value = value || '>>> '
 
   return (
