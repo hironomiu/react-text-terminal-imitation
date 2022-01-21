@@ -32,7 +32,7 @@ const Line = ({ index, value, setValues, setIndex, on }) => {
         if (point <= 0) {
         } else {
           setPoint((point) => (point = point - 1))
-          console.log(point)
+          // console.log(point)
         }
         break
       default:
@@ -72,11 +72,23 @@ const Line = ({ index, value, setValues, setIndex, on }) => {
       if (!isOnControlKey) {
         setValues((value) => {
           const array = [...value]
-          array[index] = value[index] + event.key
+          if (point === 0) {
+            array[index] = value[index] + event.key
+          } else {
+            console.log(point)
+            const newValue =
+              value[index].slice(0, value[index].length - point) +
+              event.key +
+              value[index].slice(
+                value[index].length - point,
+                value[index].length
+              )
+            array[index] = newValue
+          }
           return (value = [...array])
         })
-        console.log(isOnBKey)
-        console.log(isOnControlKey)
+        // console.log(isOnBKey)
+        // console.log(isOnControlKey)
       }
     }
   }
