@@ -31,3 +31,7 @@ yarn build
 ### Right
 
 `ArrowRight` or `CTRL + f`
+
+## Commands
+
+- echo
